@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identificação do Pet</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .card {
+            background: #ffffff;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            padding: 30px 24px;
+            text-align: center;
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            background-color: #eef2ff;
+            color: #4f46e5;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            font-size: 36px;
+        }
+
+        .label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #6b7280;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+
+        .value {
+            font-size: 1.5rem;
+            color: #111827;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: #e5e7eb;
+            margin: 15px 0;
+        }
+
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            background-color: #25d366;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: background-color 0.2s, transform 0.1s;
+            margin-top: 10px;
+        }
+
+        .btn-whatsapp:active {
+            transform: scale(0.98);
+        }
+
+        .btn-whatsapp svg {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="avatar">🐾</div>
+
+        <div class="label">Nome do Pet</div>
+        <div class="value" id="pet-name">...</div>
+
+        <div class="divider"></div>
+
+        <div class="label">Tutor / Responsável</div>
+        <div class="value" id="owner-name" style="font-size: 1.25rem;">...</div>
+
+        <div class="label">Telefone de Contato</div>
+        <div class="value" id="owner-phone" style="font-size: 1.25rem;">...</div>
+
+        <a id="btn-wa" href="#" target="_blank" class="btn-whatsapp" style="display: none;">
+            <svg viewBox="0 0 24 24">
+                <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984 0 1.762.459 3.48 1.332 5.001l-1.416 5.166 5.283-1.385c1.472.802 3.13 1.224 4.788 1.225h.003c5.505 0 9.988-4.478 9.989-9.985 0-2.667-1.037-5.176-2.922-7.062-1.886-1.886-4.396-2.944-7.067-2.944zm5.72 14.156c-.237.667-1.385 1.282-1.921 1.356-.511.071-1.168.1-1.89-.131-.44-.141-1.022-.332-1.762-.653-3.111-1.35-5.147-4.52-5.303-4.728-.156-.208-1.272-1.691-1.272-3.226 0-1.535.803-2.288 1.088-2.58.285-.292.622-.365.829-.365.207 0 .415.001.597.01.194.009.453-.074.708.538.26.623.883 2.155.96 2.311.077.156.129.338.026.545-.104.208-.156.338-.312.519-.156.182-.328.405-.468.544-.156.156-.319.326-.137.638.182.312.809 1.335 1.737 2.162 1.192 1.062 2.197 1.391 2.51 1.547.312.156.494.13.676-.078.182-.208.779-.909.987-1.221.208-.312.415-.26.701-.156.286.104 1.817.857 2.128 1.013.312.156.519.234.597.364.077.13.077.754-.16 1.421z"/>
+            </svg>
+            Entrar em Contato
+        </a>
+    </div>
+
+    <script>
+        function getParams() {
+            // Pega a URL após o '?' e decodifica caracteres (ex: %20 vira espaço)
+            const search = decodeURIComponent(window.location.search);
+            
+            if (!search) return { pet: null, dono: null, tel: null };
+
+            // Remove o primeiro '?' e divide pelos próximos '?'
+            const parts = search.substring(1).split('?');
+
+            return {
+                pet: parts[0] ? parts[0].replace(/_/g, ' ') : null,
+                dono: parts[1] ? parts[1].replace(/_/g, ' ') : null,
+                tel: parts[2] ? parts[2].trim() : null
+            };
+        }
+
+        const params = getParams();
+
+        // Atualiza os elementos na tela
+        document.getElementById('pet-name').innerText = params.pet || "Não informado";
+        document.getElementById('owner-name').innerText = params.dono || "Não informado";
+        document.getElementById('owner-phone').innerText = params.tel || "Não informado";
+
+        // Se houver telefone, prepara o botão do WhatsApp
+        if (params.tel) {
+            // Limpa o número de caracteres não numéricos
+            const cleanPhone = params.tel.replace(/\D/g, '');
+            
+            // Adiciona código do Brasil (55) se o usuário não digitou
+            const formattedPhone = cleanPhone.length <= 11 ? '55' + cleanPhone : cleanPhone;
+            
+            const btnWa = document.getElementById('btn-wa');
+            const mensagem = encodeURIComponent(`Olá! Encontrei o pet ${params.pet || ''}.`);
+            
+            btnWa.href = `https://wa.me/${formattedPhone}?text=${mensagem}`;
+            btnWa.style.display = 'inline-flex';
+        }
+    </script>
+</body>
+</html>
