@@ -1,46 +1,72 @@
 <!doctype html>
 <html lang="pt-BR">
- <head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260918-05-13efa67","C":{"Abril Fatface":"YACgEZbkUVE,0","Alfa Slab One":"YACgEYS9sJU,0","Anton":"YACgEcYqQ-A,0","Archivo":"YACgEZulLoA,0","Arial Narrow":"YAGyDvJ_4Ts,0","Arial Rounded MT Bold":"YAFcfoaHu-s,0","Arial":"YAGyDvJ_4Ts,0","Avenir Next":"YAFcfmNq6UY,0","Baloo 2":"YADK30bC6HQ,0","Bebas Neue":"YACgESME5ew,0","Bricolage Grotesque":"YAFyMcdwzpc,0","Broken Glyph":"YADZ-exUkv0,0","Canva Sans":"YAFdJjTk5UU,1","Caveat":"YALBs2ploWQ,0","Comic Sans MS":"YAFcfvtOAUY,1","Cormorant Garamond":"YAFdJhX-538,0","Courier New":"YAGzXiGs0_8,0","Courier Prime":"YAD1aFjegN8,0","DM Sans":"YAD1aU3sLnI,0","DM Serif Display":"YAD1aYG82rc,0","Forum":"YACgEcnnqB4,0","Fraunces":"YAFdJpU7Kkk,0","Georgia":"YAGzXkO0pEM,0","Ghost Mono":"YAHQutsX00Q,0","Hanken Grotesk":"YAFcfhwp99E,0","Helvetica Neue":"YAFcf6CtJfI,0","Helvetica":"YAFcf6CtJfI,0","IBM Plex Mono":"YAFdJkmvhGI,0","Impact":"YAFcfnjI7Vk,0","Instrument Serif":"YAHFeOnZNEk,0","Inter":"YAFdJvSyp_k,3","Iowan Old Style":"YAGNIFa8j9o,0","Jacques Francois":"YADK3zbC6RM,0","JetBrains Mono":"YAFdJksXcAk,0","Josefin Sans":"YAFdJjvw9Ps,0","Lato":"YAFdJuFCnaw,0","Libre Baskerville":"YACgEUFdPdA,0","Lobster":"YAD8SnSjSFI,0","Lora":"YACgEXvxf8Q,0","Merriweather":"YACgEXvHxxs,0","Montserrat":"YAFdtQi73Xs,0","Nunito":"YAFdJoNRMmU,1","Oleo Script":"YACgEQQ14jI,0","Oswald":"YACgEQY10lw,0","Pacifico":"YADLjORQ1u4,0","Phantom Sans":"YAFdJvgJ5TU,0","Playfair Display":"YAFdJhem5V8,1","Plus Jakarta Sans":"YAGvf3_u0_Q,0","Poppins":"YAFdJjbTu24,1","Press Start 2P":"YAFyGr-8pmQ,0","Quicksand":"YAFdJpYtCxE,1","Raleway":"YAFdJhmxbVQ,1","Roboto Slab":"YAFdJswIKAg,0","Rockwell":"YAFcfyVZnN0,0","Rye":"YACgEdQP21k,0","Segoe UI":"YAHNdRD1Klw,0","Source Sans 3":"YAG4lO1Mj10,0","Source Serif 4":"YACgEfdj394,0","Space Grotesk":"YADZ-dYEmhg,0","Space Mono":"YADW1-vpsoc,0","Times New Roman":"YAGzXW3gftg,0","Times":"YAGzXW3gftg,0","Trebuchet MS":"YAFcfrglpVA,0","UV Display":"YAEdVfSSpYo,0","UV Sans":"YAFdJvgJ5TU,0","Ubuntu":"YACgERDU--Q,0","Verdana":"YAGzXTctYtQ,0","Work Sans":"YAGXhLOKv44,0","Yellowtail":"YACgEYG4kG4,0","ui-monospace":"YAD1aFjegN8,0","ui-sans-serif":"YACkoD1yZN0,0"}}');</script><script src="/_sdk/83d6dfdadcd4750a.telemetry_sdk.js" integrity="sha512-XS4Dvzp6vbagZS9vFErihvr8aO3S0tH78KWUefn06fmL4WYqryBtZj/IOLITYj7dFA4gPVvPg1W/JB1DK3uLNQ=="></script>
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Força o navegador a utilizar esquema de cores claro -->
+  <meta name="color-scheme" content="light">
+  <meta name="supported-color-schemes" content="light">
+
   <title>Identificação do Pet</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Biblioteca de Ícones Lucide -->
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
+
   <style>
+    /* Força modo claro em toda a aplicação */
     :root {
+      color-scheme: light !important;
+      forced-color-adjust: none;
+      
       --ink: #18334b;
       --muted: #668196;
       --coral: #ff7c62;
       --mint: #def7eb;
       --line: #dce7ed;
+      --bg-page: #eaf4f6;
+      --card-bg: #ffffff;
     }
 
-    * {
-      box-sizing: border-box;
+    /* Anula qualquer media query de modo escuro do sistema */
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: light !important;
+      }
+      html, body {
+        background-color: var(--bg-page) !important;
+        color: var(--ink) !important;
+      }
     }
 
-    html {
-      background: #eaf4f6;
+    * { 
+      box-sizing: border-box; 
     }
 
-    body {
+    html, body {
+      background-color: var(--bg-page) !important;
+      color: var(--ink) !important;
+      color-scheme: light !important;
       width: 100%;
-      min-height: calc(100 * min(var(--vh, 1vh), 1vh));
+      min-height: 100vh;
       margin: 0;
       font-family: "DM Sans", sans-serif;
-      color: var(--ink);
       overflow-x: hidden;
     }
 
     .pet-page {
       position: relative;
       width: 100%;
-      min-height: calc(100 * min(var(--vh, 1vh), 1vh));
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 30px 18px;
       isolation: isolate;
       overflow: hidden;
+      background-color: var(--bg-page);
     }
 
     .pet-page::before,
@@ -71,6 +97,7 @@
     .pet-card-shell {
       width: 100%;
       max-width: 440px;
+      background-color: var(--card-bg) !important;
       border: 1px solid rgba(255, 255, 255, 0.82);
       border-radius: 30px;
       overflow: hidden;
@@ -82,6 +109,7 @@
       height: 135px;
       position: relative;
       overflow: hidden;
+      background-color: #b9e8df;
     }
 
     .banner-wrap::after {
@@ -104,6 +132,7 @@
       position: relative;
       padding: 0 28px 29px;
       text-align: center;
+      background-color: var(--card-bg);
     }
 
     .paw-badge {
@@ -112,43 +141,22 @@
       margin: -42px auto 15px;
       position: relative;
       z-index: 2;
+      background-color: #ffffff !important;
       border: 6px solid #ffffff;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       box-shadow: 0 8px 20px rgba(32, 83, 102, 0.16);
+      color: #337c72 !important;
     }
 
-    .paw-badge svg {
-      width: 35px;
-      height: 35px;
-    }
-
-    .pet-kicker {
-      margin: 0 0 5px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-size: 0.7rem;
-      font-weight: 700;
-    }
-
-    .pet-title {
-      margin: 0;
-      font-family: "Fraunces", serif;
-      line-height: 1.1;
-    }
-
-    .pet-description {
-      margin: 8px auto 22px;
-      max-width: 315px;
-      font-size: 0.92rem;
-      line-height: 1.5;
-    }
+    .paw-badge svg { width: 35px; height: 35px; }
 
     .info-list {
       text-align: left;
       border-top: 1px solid var(--line);
+      margin-top: 15px;
     }
 
     .info-row {
@@ -164,17 +172,14 @@
       width: 39px;
       height: 39px;
       border-radius: 13px;
-      background: #edf7f5;
-      color: #337c72;
+      background: #edf7f5 !important;
+      color: #337c72 !important;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .info-icon svg {
-      width: 19px;
-      height: 19px;
-    }
+    .info-icon svg { width: 19px; height: 19px; }
 
     .info-label {
       display: block;
@@ -183,11 +188,12 @@
       letter-spacing: 0.09em;
       font-size: 0.67rem;
       font-weight: 700;
+      color: var(--muted) !important;
     }
 
     .info-value {
       margin: 0;
-      color: var(--ink);
+      color: var(--ink) !important;
       font-size: 1.05rem;
       font-weight: 700;
       line-height: 1.3;
@@ -200,129 +206,97 @@
       min-height: 54px;
       padding: 13px 18px;
       border-radius: 16px;
+      background-color: #25d366 !important;
+      color: #ffffff !important;
       display: none;
       align-items: center;
       justify-content: center;
       gap: 10px;
       text-decoration: none;
+      font-weight: 700;
       box-shadow: 0 9px 18px rgba(29, 169, 92, 0.23);
-      transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+      transition: transform 180ms ease, box-shadow 180ms ease;
     }
 
     .contact-link:hover {
       transform: translateY(-2px);
-      filter: brightness(0.97);
       box-shadow: 0 13px 23px rgba(29, 169, 92, 0.27);
     }
 
-    .contact-link:active {
-      transform: translateY(0) scale(0.985);
-    }
-
-    .contact-link:focus-visible {
-      outline: 3px solid #18334b;
-      outline-offset: 3px;
-    }
-
-    .contact-link svg {
-      width: 21px;
-      height: 21px;
-      flex: 0 0 auto;
-    }
+    .contact-link svg { width: 21px; height: 21px; }
 
     .missing-note {
       display: none;
       margin: 20px 0 0;
       padding: 12px 15px;
       border-radius: 14px;
-      background: #fff4e8;
-      color: #936020;
+      background: #fff4e8 !important;
+      color: #936020 !important;
       font-size: 0.82rem;
       line-height: 1.4;
     }
 
     @keyframes appear {
-      from {
-        opacity: 0;
-        transform: translateY(16px) scale(0.985);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-      }
-    }
-
-    @media (max-width: 380px) {
-      .pet-page {
-        padding: 18px 13px;
-      }
-
-      .pet-content {
-        padding-right: 21px;
-        padding-left: 21px;
-      }
-
-      .banner-wrap {
-        height: 118px;
-      }
+      from { opacity: 0; transform: translateY(16px) scale(0.985); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
     }
   </style>
-  <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
-  <script src="/_sdk/8de366929c5f3b48.data_sdk.js" type="text/javascript" integrity="sha512-TyQ8k8cZj66xe/aENmn6RyZpdOFZXbAo5+KBG3PeFM+Q4qMTHU8xAqmq4ADClNfPrstgQYV6OzZHwLTnElzB2g=="></script>
-  <script src="/_sdk/0ddbbee1c66b1212.editing_sdk.js" type="text/javascript" integrity="sha512-HQn5LM1yruQSbY78ATUril6QeOJ9xj7KqO64ltLtb4vBwI5Qv3/tloFFOndBPZTNZoeV5xKzuth5y6FTi9crsg=="></script>
-  <script src="/_sdk/765e1fea0cec97ce.resizing_sdk.js" type="text/javascript" integrity="sha512-IRTJnqww0+HQ5V/LlWEQrlD5SrYHaVvaeVoNe8HYQXoaguzUGheSd9+n9s6WOgaTcEH0g37DuINHZ9aqfzWjlw=="></script>
- </head>
- <body data-template-id="__page-root">
-  <main class="pet-page" aria-labelledby="page-title">
-   <article data-template-id="pet-card" class="canva-card pet-card-shell">
-    <div class="banner-wrap"><img data-template-id="pet-banner-image" class="canva-image pet-banner" loading="lazy">
-    </div>
-    <div class="pet-content">
-     <div data-template-id="pet-badge" class="canva-banner paw-badge" aria-hidden="true"><i data-lucide="paw-print"></i>
-     </div>
-     <header>
-      <p data-template-id="page-kicker" class="canva-text pet-kicker"></p>
-      <h1 data-template-id="page-title" class="canva-text pet-title"></h1>
-      <p data-template-id="page-description" class="canva-text pet-description"></p>
-     </header>
-     <section class="info-list" aria-label="Dados de identificação">
-      <div class="info-row">
-       <div class="info-icon" aria-hidden="true"><i data-lucide="heart"></i>
-       </div>
-       <div><span data-template-id="pet-label" class="canva-text info-label"></span>
-        <p id="pet-name" class="info-value" aria-live="polite">...</p>
-       </div>
+</head>
+
+<body>
+  <main class="pet-page">
+    <article class="pet-card-shell">
+      <div class="banner-wrap">
+        <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=800&q=80" class="pet-banner" alt="Banner Pet" loading="lazy">
       </div>
-      <div class="info-row">
-       <div class="info-icon" aria-hidden="true"><i data-lucide="user-round"></i>
-       </div>
-       <div><span data-template-id="owner-label" class="canva-text info-label"></span>
-        <p id="owner-name" class="info-value" aria-live="polite">...</p>
-       </div>
+      
+      <div class="pet-content">
+        <div class="paw-badge">
+          <i data-lucide="paw-print"></i>
+        </div>
+
+        <section class="info-list" aria-label="Dados de identificação">
+          <div class="info-row">
+            <div class="info-icon"><i data-lucide="heart"></i></div>
+            <div>
+              <span class="info-label">Nome do Pet</span>
+              <p id="pet-name" class="info-value">...</p>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-icon"><i data-lucide="user-round"></i></div>
+            <div>
+              <span class="info-label">Responsável</span>
+              <p id="owner-name" class="info-value">...</p>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <div class="info-icon"><i data-lucide="phone"></i></div>
+            <div>
+              <span class="info-label">Telefone</span>
+              <p id="owner-phone" class="info-value">...</p>
+            </div>
+          </div>
+        </section>
+
+        <a id="btn-wa" class="contact-link" href="#" target="_blank" rel="noopener noreferrer">
+          <i data-lucide="message-circle"></i>
+          <span>Falar no WhatsApp</span>
+        </a>
+
+        <p id="missing-phone-note" class="missing-note">Nenhum telefone informado para contato.</p>
       </div>
-      <div class="info-row">
-       <div class="info-icon" aria-hidden="true"><i data-lucide="phone"></i>
-       </div>
-       <div><span data-template-id="phone-label" class="canva-text info-label"></span>
-        <p id="owner-phone" class="info-value" aria-live="polite">...</p>
-       </div>
-      </div>
-     </section><a id="btn-wa" data-template-id="contact-button" class="canva-button contact-link" href="#" target="_blank" rel="noopener noreferrer"> <i data-lucide="message-circle" aria-hidden="true"></i> <span data-template-id="contact-button-text" class="canva-text"></span> </a>
-     <p id="missing-phone-note" data-template-id="missing-phone-note" class="canva-text missing-note" role="status"></p>
-    </div>
-   </article>
+    </article>
   </main>
+
   <script>
     function getParams() {
       const search = decodeURIComponent(window.location.search);
-
-      if (!search) {
-        return { pet: null, dono: null, tel: null };
-      }
+      if (!search) return { pet: null, dono: null, tel: null };
 
       const parts = search.substring(1).split("?");
-
       return {
         pet: parts[0] ? parts[0].replace(/_/g, " ") : null,
         dono: parts[1] ? parts[1].replace(/_/g, " ") : null,
@@ -354,8 +328,10 @@
 
     document.addEventListener("DOMContentLoaded", function () {
       fillPetDetails();
-      lucide.createIcons();
+      if (typeof lucide !== "undefined") {
+        lucide.createIcons();
+      }
     });
   </script>
- </body>
+</body>
 </html>
